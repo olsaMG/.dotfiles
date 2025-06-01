@@ -167,7 +167,7 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon}", //{format_source}",
+        "format": "{volume}% {icon} ", //{format_source}",
         "format-bluetooth": "{volume}% {icon} 󰂯", //{format_source}",
         "format-bluetooth-muted": "󰖁 {icon} 󰂯", //{format_source}",
         "format-muted": "󰖁 {format_source}",
@@ -197,14 +197,14 @@
       "interval": 1,
       "hwmon-path": "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon6/temp1_input",
       // "thermal-zone": 0,
-      "format": " {temperatureC}°C",
+      "format": " {temperatureC}°C ",
       "critical-threshold": 80,
       "format-critical": " {temperatureC}°C",
       "on-click": "ghostty -e btop"
     },
     "custom/power": {
-      "format": "  {icon}  ",
-      "format-icons": "",//󰣇
+      "format": " {icon} ",
+      "format-icons": "\uf313", //"",//󰣇
       // "exec-on-event": "true",
       "on-click": "~/.config/waybar/scripts/rofi-power",
     }

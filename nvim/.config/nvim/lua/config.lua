@@ -68,3 +68,12 @@ for name, icon in pairs(symbols) do
   local hl = "DiagnosticSign" .. name
   vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = vim.api.nvim_create_augroup("LaunchSnacksOnStartup", { clear = true }),
+  callback = function()
+    if vim.fn.argv(0) == "" then
+      require("snacks.picker").files()
+    end
+  end,
+})

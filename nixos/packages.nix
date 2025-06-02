@@ -54,6 +54,7 @@
     git
     gnumake
     go
+    templ
     jdk21
     lazygit
     leptosfmt

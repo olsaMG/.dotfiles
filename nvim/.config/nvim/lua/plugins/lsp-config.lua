@@ -195,16 +195,21 @@ return {
         capabilities = capabilities,
         handlers = handlers,
         cmd = { "gopls" },
-        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        filetypes = { "go", "gomod", "gowork", "gotmpl", "templ" },
         settings = {
           gopls = {
             completeUnimported = true,
-            usePlaceholders = true,
+            usePlaceholders = false,
             analyses = {
               unusedparams = true,
             },
           },
         },
+      })
+
+      lspconfig.templ.setup({
+        capabilities = capabilities,
+        handlers = handlers,
       })
 
       -- Keymaps

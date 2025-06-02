@@ -137,8 +137,8 @@ eval "$(starship init zsh)"
 
 #Golang
 # export GOROOT=/usr/local/go
-# export GOPATH=$HOME/go
-# export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 #Android Studio
 export ANDROID_HOME=$HOME/Android/Sdk

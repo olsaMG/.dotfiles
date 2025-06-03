@@ -59,6 +59,7 @@
     lazygit
     leptosfmt
     libclang
+    maven
     nodejs_24
     podman-compose
     python3

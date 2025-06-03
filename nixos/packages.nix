@@ -62,6 +62,7 @@
     nodejs_24
     podman-compose
     python3
+    prettierd
     quarkus
     rustup
     tailwindcss

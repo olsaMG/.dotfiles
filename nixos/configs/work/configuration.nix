@@ -149,9 +149,10 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7";
-  };
+  # Using nh instead
+  # nix.gc = {
+  #   automatic = true;
+  #   dates = "weekly";
+  #   options = "--delete-older-than 7";
+  # };
 }

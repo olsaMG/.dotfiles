@@ -3,6 +3,7 @@ corner_radius = 8
 frame_color = "#89b4fa"
 separator_color= frame
 highlight = "#89b4fa"
+font = "Jetbrains Mono 10"
 
 [urgency_low]
 background = "#1e1e2e"

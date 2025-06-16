@@ -58,6 +58,7 @@
     clang
     exercism
     dart-sass
+    devenv
     gh
     git
     gnumake
@@ -70,6 +71,7 @@
     maven
     nodejs_24
     podman-compose
+    postgresql
     python3
     prettierd
     quarkus

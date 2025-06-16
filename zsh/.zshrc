@@ -12,6 +12,7 @@ fi
 if ! ssh-add -l >/dev/null 2>&1; then
     # Add your default key (id_rsa or id_ed25519)
     ssh-add ~/.ssh/olsassh
+    ssh-add ~/.ssh/id_ed25519_personal
     # Or for a specific key:
     # ssh-add ~/.ssh/my_github_key
 

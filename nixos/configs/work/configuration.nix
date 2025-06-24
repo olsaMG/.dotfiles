@@ -101,6 +101,9 @@
       ];
   };
 
+  # For devenv cachix
+  nix.settings.trusted-users = [ "root" "eox" ];
+
   # Enable common container config files in /etc/containers
   virtualisation.containers.enable = true;
   virtualisation = {

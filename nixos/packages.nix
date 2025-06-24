@@ -53,6 +53,7 @@
     quickemu
     teams-for-linux
     yazi
+    LycheeSlicer
 
     # Devtools
     clang

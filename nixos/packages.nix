@@ -40,6 +40,16 @@
     flake = "/home/eox/.dotfiles/nixos";
   };
 
+  programs = {
+    appimage = {
+      enable = true;
+      binfmt = true;
+      package = pkgs.appimage-run.override {
+        extraPkgs = pkgs: [ pkgs.xorg.libxshmfence ];
+      };
+    };
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -106,6 +116,7 @@
     jq
     fastfetch
     ripgrep
+    openssl
     sshs
     starship
     syncthing

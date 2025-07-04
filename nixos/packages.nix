@@ -56,6 +56,7 @@
     # Applications
     discord
     ghostty
+    krita
     google-chrome
     jetbrains.idea-ultimate
     spotify-player

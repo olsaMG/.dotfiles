@@ -128,6 +128,9 @@
     enableSSHSupport = true;
   };
 
+  networking.extraHosts = ''
+    16.170.99.234 ldapadmin.olsa.test.wizepass.com
+  '';
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

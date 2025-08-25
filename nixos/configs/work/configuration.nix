@@ -130,6 +130,7 @@
 
   networking.extraHosts = ''
     16.170.99.234 ldapadmin.olsa.test.wizepass.com
+    51.20.45.254 ip-172-31-0-198.eu-north-1.compute.internal
   '';
   # List services that you want to enable:
 

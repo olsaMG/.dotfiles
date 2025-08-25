@@ -68,6 +68,7 @@
 
     # Devtools
     clang
+    gemini-cli
     exercism
     dart-sass
     devenv

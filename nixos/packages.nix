@@ -90,6 +90,7 @@
     quarkus
     rustup
     tailwindcss
+    qmk
 
     # LSP
     lua-language-server

@@ -62,10 +62,96 @@ return {
         handlers = handlers,
       })
 
-      lspconfig.jdtls.setup({
-        handlers = handlers,
-        capabilities = capabilities,
-      })
+
+      -- lspconfig.jdtls.setup({
+      --   handlers = handlers,
+      --   capabilities = capabilities,
+      --
+      --   -- Simple command
+      --   cmd = { "jdtls" },
+      --
+      --   -- Root directory detection
+      --   root_dir = require("lspconfig").util.root_pattern(
+      --     ".git",
+      --     "mvnw",
+      --     "gradlew",
+      --     "pom.xml",
+      --     "build.gradle",
+      --     "build.gradle.kts"
+      --   ),
+      --
+      --   -- Minimal init_options to avoid ClassCastException
+      --   init_options = {
+      --     bundles = {}
+      --   },
+      --
+      --   settings = {
+      --     java = {
+      --       maven = {
+      --         downloadSources = true,
+      --       },
+      --       eclipse = {
+      --         downloadSources = true,
+      --       },
+      --       implementationsCodeLens = {
+      --         enabled = true,
+      --       },
+      --       referencesCodeLens = {
+      --         enabled = true,
+      --       },
+      --       configuration = {
+      --         updateBuildConfiguration = "automatic",
+      --       },
+      --       completion = {
+      --         importOrder = {
+      --           "java",
+      --           "javax",
+      --           "org",
+      --           "com",
+      --         },
+      --       },
+      --       sources = {
+      --         organizeImports = {
+      --           starThreshold = 9999,
+      --           staticStarThreshold = 9999,
+      --         },
+      --       },
+      --     }
+      --   },
+      --
+      --   on_attach = function(client, bufnr)
+      --     -- Basic keymaps
+      --     local opts = { buffer = bufnr, silent = true }
+      --     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+      --     vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
+      --     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+      --     vim.keymap.set("n", "<leader>ra", vim.lsp.buf.rename, opts)
+      --
+      --     -- Debug info
+      --     vim.defer_fn(function()
+      --       local root = client.config.root_dir
+      --       print("JDTLS root directory: " .. (root or "none"))
+      --     end, 2000)
+      --   end,
+      -- })
+      -- lspconfig.jdtls.setup({
+      --   handlers = handlers,
+      --   capabilities = capabilities,
+      --   settings = {
+      --     java = {
+      --       maven = {
+      --         downloadSources = true,
+      --       },
+      --       implementationsCodeLens = {
+      --         enabled = true,
+      --       },
+      --       referencesCodeLens = {
+      --         enabled = true,
+      --       },
+      --     }
+      --   }
+
+      -- })
       -- settings = {
       --   java = {
       --     configuration = {

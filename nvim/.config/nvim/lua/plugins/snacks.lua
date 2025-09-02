@@ -1,6 +1,8 @@
 return
 {
   "folke/snacks.nvim",
+  lazy = false,
+  priority = 1000,
   ---@type snacks.Config
   opts = {
     picker = {
@@ -20,10 +22,4 @@ return
     { "<leader>gi", function() Snacks.picker.lsp_implementations() end,  desc = "Goto Implementation" },
     { "<leader>gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto Type Definition" },
   },
-  event = "VimEnter",
-  config = function()
-    if vim.fn.argv(0) == "" then
-      require("snacks.picker").files()
-    end
-  end,
 }

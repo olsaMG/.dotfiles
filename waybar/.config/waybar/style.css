@@ -50,6 +50,7 @@ tooltip {
 
 #custom-weather,
 #custom-update,
+#custom-power,
 #clock,
 #mpris,
 #cpu,
@@ -121,6 +122,10 @@ tooltip {
   margin-left: 5px;
 }
 
+#custom-power {
+  font-size: 16px;
+  /* padding: 0 8px; */
+}
 
 
 #custom-update {

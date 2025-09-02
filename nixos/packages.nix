@@ -33,37 +33,64 @@
     openDefaultPorts = true; # Open ports in the firewall for Syncthing
   };
 
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/eox/.dotfiles/nixos";
+  };
+
+  programs = {
+    appimage = {
+      enable = true;
+      binfmt = true;
+      package = pkgs.appimage-run.override {
+        extraPkgs = pkgs: [ pkgs.xorg.libxshmfence ];
+      };
+    };
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Applications
     discord
     ghostty
+    krita
     google-chrome
     jetbrains.idea-ultimate
+    spotify-player
     qemu
     quickemu
     teams-for-linux
     yazi
+    LycheeSlicer
 
     # Devtools
     clang
+    gemini-cli
     exercism
     dart-sass
+    devenv
     gh
     git
     gnumake
     go
+    templ
     jdk21
     lazygit
     leptosfmt
     libclang
+    maven
     nodejs_24
     podman-compose
+    postgresql
     python3
+    prettierd
     quarkus
     rustup
     tailwindcss
+    qmk
 
     # LSP
     lua-language-server
@@ -90,8 +117,10 @@
     dnsutils
     nmap
     jq
+    flameshot
     fastfetch
     ripgrep
+    openssl
     sshs
     starship
     syncthing

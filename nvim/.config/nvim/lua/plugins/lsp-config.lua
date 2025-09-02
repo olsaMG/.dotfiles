@@ -62,38 +62,24 @@ return {
         handlers = handlers,
       })
 
-      lspconfig.jdtls.setup({
-        handlers = handlers,
-        capabilities = capabilities,
-      })
-      -- settings = {
-      --   java = {
-      --     configuration = {
-      --       runtimes = {
-      --         {
-      --           name = "JavaSE-17",
-      --           path = "~/.sdkman/candidates/java/17.0.8-tem",
-      --           default = false,
-      --         },
-      --         {
-      --           name = "JavaSE-21",
-      --           path = "~/.sdkman/candidates/java/21.0.5-tem",
-      --           default = true,
-      --         },
+
+      -- Using nvim-jdtls instead
+      -- lspconfig.jdtls.setup({
+      --   handlers = handlers,
+      --   capabilities = capabilities,
+      --   settings = {
+      --     java = {
+      --       maven = {
+      --         downloadSources = true,
       --       },
-      --     },
-      -- Use conform
-      -- format = {
-      -- 	enabled = true,
-      -- 	settings = {
-      -- 		url = jdtls_path .. "/intellij-java-google-style.xml",
-      -- 		profile = "GoogleStyle",
-      -- 		indent_size = 4,
-      -- 		tab_size = 4,
-      -- 	},
-      -- },
-      -- },
-      -- },
+      --       implementationsCodeLens = {
+      --         enabled = true,
+      --       },
+      --       referencesCodeLens = {
+      --         enabled = true,
+      --       },
+      --     }
+      --   }
       -- })
 
       -- configure tailwindcss server
@@ -195,16 +181,21 @@ return {
         capabilities = capabilities,
         handlers = handlers,
         cmd = { "gopls" },
-        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        filetypes = { "go", "gomod", "gowork", "gotmpl", "templ" },
         settings = {
           gopls = {
             completeUnimported = true,
-            usePlaceholders = true,
+            usePlaceholders = false,
             analyses = {
               unusedparams = true,
             },
           },
         },
+      })
+
+      lspconfig.templ.setup({
+        capabilities = capabilities,
+        handlers = handlers,
       })
 
       -- Keymaps

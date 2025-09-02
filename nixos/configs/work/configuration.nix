@@ -101,6 +101,9 @@
       ];
   };
 
+  # For devenv cachix
+  nix.settings.trusted-users = [ "root" "eox" ];
+
   # Enable common container config files in /etc/containers
   virtualisation.containers.enable = true;
   virtualisation = {
@@ -125,6 +128,10 @@
     enableSSHSupport = true;
   };
 
+  networking.extraHosts = ''
+    16.170.99.234 ldapadmin.olsa.test.wizepass.com
+    51.20.45.254 ip-172-31-0-198.eu-north-1.compute.internal
+  '';
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
@@ -149,9 +156,10 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7";
-  };
+  # Using nh instead
+  # nix.gc = {
+  #   automatic = true;
+  #   dates = "weekly";
+  #   options = "--delete-older-than 7";
+  # };
 }

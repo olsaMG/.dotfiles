@@ -12,6 +12,7 @@ fi
 if ! ssh-add -l >/dev/null 2>&1; then
     # Add your default key (id_rsa or id_ed25519)
     ssh-add ~/.ssh/olsassh
+    ssh-add ~/.ssh/id_ed25519_personal
     # Or for a specific key:
     # ssh-add ~/.ssh/my_github_key
 
@@ -137,8 +138,8 @@ eval "$(starship init zsh)"
 
 #Golang
 # export GOROOT=/usr/local/go
-# export GOPATH=$HOME/go
-# export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 #Android Studio
 export ANDROID_HOME=$HOME/Android/Sdk

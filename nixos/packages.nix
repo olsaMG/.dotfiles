@@ -3,6 +3,16 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add common libraries that might be needed
+    stdenv.cc.cc.lib
+    zlib
+    openssl
+    curl
+    glibc
+  ];
+
   programs.tmux = {
     enable = true;
     plugins = with pkgs; [
@@ -67,6 +77,7 @@
     LycheeSlicer
 
     # Devtools
+    bun
     clang
     gemini-cli
     exercism
@@ -105,6 +116,10 @@
     tailwindcss-language-server
     typescript
     vscode-langservers-extracted
+
+    # Rust
+    openssl
+    pkg-config
 
     # Utils
     bat

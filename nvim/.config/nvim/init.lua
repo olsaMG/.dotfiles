@@ -15,3 +15,12 @@ require("config")
 require("lazy").setup("plugins")
 
 vim.keymap.set('n', '<leader>cc', ':CodeCompanionChat<CR>', { desc = 'CodeCompanion Chat' })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "xml",
+  callback = function()
+    vim.bo.tabstop = 4
+    vim.bo.shiftwidth = 4
+    vim.bo.expandtab = true
+  end,
+})

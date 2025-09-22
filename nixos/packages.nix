@@ -43,6 +43,9 @@
     openDefaultPorts = true; # Open ports in the firewall for Syncthing
   };
 
+  # for quickemu
+  services.spice-vdagentd.enable = true;
+
   programs.nh = {
     enable = true;
     clean.enable = true;

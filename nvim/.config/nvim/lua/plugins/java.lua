@@ -23,6 +23,7 @@ return {
               references = { includeDecompiledSources = true },
               contentProvider = { preferred = "fernflower" },
               configuration = { updateBuildConfiguration = "automatic" },
+              inlayHints = { parameterNames = { enabled = "all" } },
             }
           },
 
@@ -34,9 +35,11 @@ return {
           on_attach = function(client, bufnr)
             -- Just enable JDTLS-specific features
             require("jdtls.setup").add_commands()
-
             -- Optional: Add a few Java-specific commands if you want
             -- vim.keymap.set("n", "<leader>jo", jdtls.organize_imports, { buffer = bufnr, desc = "Organize imports" })
+            vim.keymap.set("n", "<leader>ti", function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+            end, { buffer = bufnr, desc = "Toggle LSP Inlay Hints" })
           end,
         }
 

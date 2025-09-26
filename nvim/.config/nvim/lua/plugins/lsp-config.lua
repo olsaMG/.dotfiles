@@ -41,29 +41,27 @@ return {
 
       -- print("jdtls_path", jdtls_path)
 
-      local lspconfig = require("lspconfig")
-
-      lspconfig.html.setup({
+      vim.lsp.config("html", {
         capabilities = capabilities,
         handlers = handlers,
       })
 
-      lspconfig.nixd.setup({
+      vim.lsp.config("nixd", {
         capabilities = capabilities,
         handlers = handlers,
       })
 
-      lspconfig.lua_ls.setup({
+      vim.lsp.config("lua_ls", {
         capabilities = capabilities,
         handlers = handlers,
       })
 
-      lspconfig.lemminx.setup({
+      vim.lsp.config("lemminx", {
         capabilities = capabilities,
         handlers = handlers,
       })
 
-      lspconfig.buf_ls.setup({
+      vim.lsp.config("buf_ls", {
         capabilities = capabilities,
         handlers = handlers,
       })
@@ -89,7 +87,7 @@ return {
       -- })
 
       -- configure tailwindcss server
-      lspconfig["tailwindcss"].setup({
+      vim.lsp.config("tailwindcss", {
         capabilities = capabilities,
         handlers = handlers,
         filetypes = {
@@ -111,13 +109,6 @@ return {
             rust = "html",
           },
         },
-        root_dir = require("lspconfig").util.root_pattern(
-          "tailwind.config.js",
-          "tailwind.config.ts",
-          "postcss.config.js",
-          "postcss.config.ts",
-          "windi.config.ts"
-        ),
         settings = {
           css = {
             validate = true,
@@ -141,7 +132,7 @@ return {
       })
 
       -- configure css server
-      lspconfig["cssls"].setup({
+      vim.lsp.config("cssls", {
         capabilities = capabilities,
         handlers = handlers,
         settings = {
@@ -183,7 +174,9 @@ return {
       --   }
       --
       -- })
-      lspconfig.gopls.setup({
+      --
+      --
+      vim.lsp.config("gopls", {
         capabilities = capabilities,
         handlers = handlers,
         cmd = { "gopls" },
@@ -198,8 +191,7 @@ return {
           },
         },
       })
-
-      lspconfig.templ.setup({
+      vim.lsp.config("templ", {
         capabilities = capabilities,
         handlers = handlers,
       })
@@ -220,6 +212,8 @@ return {
       vim.diagnostic.config({
         float = { border = "rounded" },
       })
+
+      vim.lsp.enable({ "html", "nixd", "lua_ls", "lemmix", "buf_ls", "tailwindcss", "cssls", "gopls", "templ" })
     end,
   },
 }

@@ -108,6 +108,7 @@
 
     # LSP
     buf
+    tree-sitter
     lua-language-server
     lemminx
     gopls

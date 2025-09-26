@@ -33,7 +33,7 @@ return {
       templ = { "templ" },
       rust = { "leptosfmt", "rustfmt" },
       kotlin = { "ktfmt" },
-      xml = { "xmlformatter" },
+      xml = { "lemmnix" },
       nix = { "nixfmt" },
       java = { "google-java-format" },
     },
@@ -43,9 +43,6 @@ return {
     formatters = {
       shfmt = {
         prepend_args = { "-i", "2" },
-      },
-      xmlformatter = {
-        prepend_args = { "--indent", "4" },
       },
     },
   },

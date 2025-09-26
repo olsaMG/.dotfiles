@@ -3,6 +3,16 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add common libraries that might be needed
+    stdenv.cc.cc.lib
+    zlib
+    openssl
+    curl
+    glibc
+  ];
+
   programs.tmux = {
     enable = true;
     plugins = with pkgs; [
@@ -32,6 +42,9 @@
     enable = true;
     openDefaultPorts = true; # Open ports in the firewall for Syncthing
   };
+
+  # for quickemu
+  services.spice-vdagentd.enable = true;
 
   programs.nh = {
     enable = true;
@@ -67,6 +80,7 @@
     LycheeSlicer
 
     # Devtools
+    bun
     clang
     gemini-cli
     exercism
@@ -93,6 +107,8 @@
     qmk
 
     # LSP
+    buf
+    tree-sitter
     lua-language-server
     lemminx
     gopls
@@ -105,6 +121,10 @@
     tailwindcss-language-server
     typescript
     vscode-langservers-extracted
+
+    # Rust
+    openssl
+    pkg-config
 
     # Utils
     bat

@@ -22,6 +22,7 @@ return {
   -- 			-- "gopls",
   -- 			"lemminx",
   -- 			"kotlin_language_server",
+  -- 			"buf_ls",
   -- 		},
   -- 	},
   -- },
@@ -58,6 +59,11 @@ return {
       })
 
       lspconfig.lemminx.setup({
+        capabilities = capabilities,
+        handlers = handlers,
+      })
+
+      lspconfig.buf_ls.setup({
         capabilities = capabilities,
         handlers = handlers,
       })

@@ -107,6 +107,7 @@
     qmk
 
     # LSP
+    buf
     lua-language-server
     lemminx
     gopls

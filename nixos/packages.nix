@@ -92,6 +92,7 @@
     go
     templ
     jdk21
+    # jdk24
     lazygit
     leptosfmt
     libclang
@@ -130,6 +131,7 @@
     bat
     btop
     curl
+    grpcurl
     fzf
     httpie
     lsof

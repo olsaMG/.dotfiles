@@ -33,7 +33,7 @@ return {
       templ = { "templ" },
       rust = { "leptosfmt", "rustfmt" },
       kotlin = { "ktfmt" },
-      xml = { "lemmnix" },
+      xml = { "lemminx" },
       nix = { "nixfmt" },
       java = { "google-java-format" },
     },

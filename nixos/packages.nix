@@ -101,7 +101,8 @@
     podman-compose
     postgresql
     python3
-    prettierd
+    tokei
+    biome
     quarkus
     rustup
     tailwindcss

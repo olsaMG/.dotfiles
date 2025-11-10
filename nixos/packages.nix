@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, pkgs-unstable, ... }: {
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -102,7 +102,7 @@
     postgresql
     python3
     tokei
-    biome
+    pkgs-unstable.biome
     quarkus
     rustup
     tailwindcss

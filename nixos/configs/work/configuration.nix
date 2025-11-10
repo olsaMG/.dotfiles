@@ -30,12 +30,12 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.wireless.iwd.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
+  # networking.wireless.iwd.enable = true;
+  # networking.networkmanager.wifi.backend = "iwd";
   # --- MAC Randomization ---
-  networking.wireless.iwd.settings = {
-    General = { AddressRandomization = "network"; };
-  };
+  # networking.wireless.iwd.settings = {
+  #   General = { AddressRandomization = "network"; };
+  # };
 
   services.tailscale.enable = true;
 

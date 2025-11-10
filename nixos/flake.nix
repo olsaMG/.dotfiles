@@ -4,6 +4,7 @@
   inputs = {
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-index-database.url = "github:nix-community/nix-index-database";
     catppuccin.url = "github:catppuccin/nix/release-25.05";
@@ -13,17 +14,25 @@
     };
   };
 
-  outputs = { self, nixpkgs, catppuccin, home-manager, nix-index-database, ...
-    }@inputs: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, catppuccin, home-manager
+    , nix-index-database, ... }@inputs: {
 
       nixosConfigurations.e00x = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = import nixpkgs-unstable { system = "x86_64-linux"; };
+        };
         modules =
           [ ./configs/e00x/configuration.nix ./desktop-env.nix ./packages.nix ];
       };
 
       nixosConfigurations.work = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = import nixpkgs-unstable { system = "x86_64-linux"; };
+        };
         modules = [
           ./configs/work/configuration.nix
           ./desktop-env.nix

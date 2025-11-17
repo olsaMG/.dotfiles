@@ -73,8 +73,8 @@
     google-chrome
     jetbrains.idea-ultimate
     spotify-player
-    qemu
     quickemu
+    spice-gtk
     teams-for-linux
     yazi
     LycheeSlicer

@@ -101,7 +101,7 @@
   users.users.eox = {
     isNormalUser = true;
     description = "eox";
-    extraGroups = [ "networkmanager" "wheel" "podman" ];
+    extraGroups = [ "networkmanager" "wheel" "podman" "libvirtd" ];
     packages = with pkgs;
       [
         #  thunderbird
@@ -111,6 +111,16 @@
   # For devenv cachix
   nix.settings.trusted-users = [ "root" "eox" ];
 
+  # For windows vm
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      runAsRoot = false;
+      ovmf.enable = true;
+      swtpm.enable = true;
+    };
+  };
+  services.spice-webdavd.enable = true;
   # Enable common container config files in /etc/containers
   virtualisation.containers.enable = true;
   virtualisation = {

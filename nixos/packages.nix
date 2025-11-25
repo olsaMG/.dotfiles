@@ -140,6 +140,7 @@
     dnsutils
     nmap
     jq
+    gtk3
     flameshot
     fastfetch
     ripgrep

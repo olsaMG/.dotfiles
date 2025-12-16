@@ -30,6 +30,13 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  # networking.wireless.iwd.enable = true;
+  # networking.networkmanager.wifi.backend = "iwd";
+  # --- MAC Randomization ---
+  # networking.wireless.iwd.settings = {
+  #   General = { AddressRandomization = "network"; };
+  # };
+
   services.tailscale.enable = true;
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -94,7 +101,7 @@
   users.users.eox = {
     isNormalUser = true;
     description = "eox";
-    extraGroups = [ "networkmanager" "wheel" "podman" ];
+    extraGroups = [ "networkmanager" "wheel" "podman" "libvirtd" ];
     packages = with pkgs;
       [
         #  thunderbird
@@ -104,6 +111,15 @@
   # For devenv cachix
   nix.settings.trusted-users = [ "root" "eox" ];
 
+  # For windows vm
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      runAsRoot = false;
+      swtpm.enable = true;
+    };
+  };
+  services.spice-webdavd.enable = true;
   # Enable common container config files in /etc/containers
   virtualisation.containers.enable = true;
   virtualisation = {

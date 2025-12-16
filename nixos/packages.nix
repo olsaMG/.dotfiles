@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, pkgs-unstable, ... }: {
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -73,8 +73,8 @@
     google-chrome
     jetbrains.idea-ultimate
     spotify-player
-    qemu
     quickemu
+    spice-gtk
     teams-for-linux
     yazi
     LycheeSlicer
@@ -92,6 +92,7 @@
     go
     templ
     jdk21
+    # jdk24
     lazygit
     leptosfmt
     libclang
@@ -100,7 +101,8 @@
     podman-compose
     postgresql
     python3
-    prettierd
+    tokei
+    pkgs-unstable.biome
     quarkus
     rustup
     tailwindcss
@@ -130,6 +132,7 @@
     bat
     btop
     curl
+    grpcurl
     fzf
     httpie
     lsof
@@ -137,6 +140,7 @@
     dnsutils
     nmap
     jq
+    gtk3
     flameshot
     fastfetch
     ripgrep

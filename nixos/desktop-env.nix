@@ -21,7 +21,7 @@
     settings = {
       default_session = {
         command = ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          ${pkgs.tuigreet}/bin/tuigreet \
           --greeting 'The journey begins with a single login. Make it count.' \
           --time \
           --remember \
@@ -51,7 +51,7 @@
     hyprpolkitagent
     libnotify
     pavucontrol
-    rofi-wayland
+    rofi
     # sddm-astronaut
     slurp
     waybar

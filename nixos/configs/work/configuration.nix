@@ -97,15 +97,23 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Enable ACL support on /dev (required for SPICE USB redirection)
-  fileSystems."/dev".options = [ "mode=755" "nosuid" "strictatime" "acl" ];
+  # Pass yubikey to vm-----------------------------
+  # This allows the hardware to be accessed for redirection without remounting /dev
+  services.udev.extraRules = ''
+    # Yubico Yubikey
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", TAG+="uaccess", GROUP="libvirtd", MODE="0660"
+  '';
 
+  # Enable Smartcard daemon (Required for Yubikey GPG/PIV/Auth modes)
+  services.pcscd.enable = true;
+  # --------------------
   # User account
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.eox = {
     isNormalUser = true;
     description = "eox";
-    extraGroups = [ "networkmanager" "wheel" "podman" "libvirtd" "plugdev" ];
+    extraGroups =
+      [ "networkmanager" "wheel" "podman" "libvirtd" "plugdev" "kvm" ];
   };
 
   # For devenv cachix

@@ -71,11 +71,12 @@
     ghostty
     krita
     google-chrome
-    jetbrains.idea-ultimate
+    jetbrains.idea
     spotify-player
     quickemu
     spice-gtk
     teams-for-linux
+    pkgs-unstable.rustdesk
     yazi
     LycheeSlicer
 
@@ -86,6 +87,7 @@
     exercism
     dart-sass
     devenv
+    vscode
     gh
     git
     gnumake

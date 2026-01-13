@@ -97,41 +97,44 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Enable ACL support on /dev (required for SPICE USB redirection)
+  fileSystems."/dev".options = [ "mode=755" "nosuid" "strictatime" "acl" ];
+
+  # User account
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.eox = {
     isNormalUser = true;
     description = "eox";
-    extraGroups = [ "networkmanager" "wheel" "podman" "libvirtd" ];
-    packages = with pkgs;
-      [
-        #  thunderbird
-      ];
+    extraGroups = [ "networkmanager" "wheel" "podman" "libvirtd" "plugdev" ];
   };
 
   # For devenv cachix
   nix.settings.trusted-users = [ "root" "eox" ];
 
-  # For windows vm
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      runAsRoot = false;
-      swtpm.enable = true;
-    };
-  };
-  services.spice-webdavd.enable = true;
-  # Enable common container config files in /etc/containers
-  virtualisation.containers.enable = true;
+  # Virtualisation stack (libvirt + spice + podman + containers)
   virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu.runAsRoot = false;
+      qemu.swtpm.enable = true;
+    };
+
+    # Enable vm usb passthrough
+    spiceUSBRedirection.enable = true;
+
+    # Enable common container config files in /etc/containers
+    containers.enable = true;
+
     podman = {
       enable = true;
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      # Create a docker alias for podman, to use it as a drop-in replacement
       dockerCompat = true;
       # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
     };
-
   };
+
+  services.spice-webdavd.enable = true;
   # Point dockerstuff to podman
   environment.sessionVariables.DOCKER_HOST =
     "unix://$(podman info --format '{{.Host.RemoteSocket.Path}}')";

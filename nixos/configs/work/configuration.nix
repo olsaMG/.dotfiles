@@ -100,10 +100,9 @@
   # Pass yubikey to vm-----------------------------
   # This allows the hardware to be accessed for redirection without remounting /dev
   services.udev.extraRules = ''
-    # Yubico Yubikey
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", TAG+="uaccess", GROUP="libvirtd", MODE="0660"
+    # YubiKey 5 (FIDO2/HMAC support)
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0407", TAG+="uaccess"
   '';
-
   # Enable Smartcard daemon (Required for Yubikey GPG/PIV/Auth modes)
   services.pcscd.enable = true;
   # --------------------

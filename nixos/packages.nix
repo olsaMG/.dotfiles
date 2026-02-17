@@ -104,8 +104,10 @@
     git
     gnumake
     go
+    gcc
     templ
-    jdk21
+    # jdk21
+    jdk25
     # jdk24
     lazygit
     leptosfmt

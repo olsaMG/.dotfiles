@@ -154,6 +154,7 @@
     lsof
     usbutils
     dnsutils
+    impala
     nmap
     jq
     gtk3

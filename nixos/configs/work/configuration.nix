@@ -29,9 +29,19 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
-  # networking.wireless.iwd.enable = true;
-  # networking.networkmanager.wifi.backend = "iwd";
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      Network = {
+        EnableIPv4 = true;
+        EnableIPv6 = true;
+        NameResolvingService = "systemd";
+      };
+    };
+  };
+
+  # Enable systemd-resolved to catch DNS changes from IWD
+  services.resolved.enable = true;
   # --- MAC Randomization ---
   # networking.wireless.iwd.settings = {
   #   General = { AddressRandomization = "network"; };

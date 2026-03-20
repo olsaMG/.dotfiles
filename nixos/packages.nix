@@ -28,6 +28,18 @@
     defaultEditor = true;
   };
 
+  programs.obs-studio = {
+    enable = true;
+
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+      obs-gstreamer
+      obs-vkcapture
+    ];
+  };
+
   # I use zsh btw
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
@@ -71,11 +83,12 @@
     ghostty
     krita
     google-chrome
-    jetbrains.idea-ultimate
+    jetbrains.idea
     spotify-player
     quickemu
     spice-gtk
     teams-for-linux
+    pkgs-unstable.rustdesk
     yazi
     LycheeSlicer
 
@@ -86,12 +99,15 @@
     exercism
     dart-sass
     devenv
+    vscode
     gh
     git
     gnumake
     go
+    gcc
     templ
-    jdk21
+    # jdk21
+    jdk25
     # jdk24
     lazygit
     leptosfmt
@@ -138,6 +154,7 @@
     lsof
     usbutils
     dnsutils
+    impala
     nmap
     jq
     gtk3
@@ -151,6 +168,7 @@
     stow
     tldr
     unzip
+    vlc
     wget
   ];
 }

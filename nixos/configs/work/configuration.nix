@@ -29,9 +29,19 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
-  # networking.wireless.iwd.enable = true;
-  # networking.networkmanager.wifi.backend = "iwd";
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      Network = {
+        EnableIPv4 = true;
+        EnableIPv6 = true;
+        NameResolvingService = "systemd";
+      };
+    };
+  };
+
+  # Enable systemd-resolved to catch DNS changes from IWD
+  services.resolved.enable = true;
   # --- MAC Randomization ---
   # networking.wireless.iwd.settings = {
   #   General = { AddressRandomization = "network"; };
@@ -97,41 +107,51 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Pass yubikey to vm-----------------------------
+  # This allows the hardware to be accessed for redirection without remounting /dev
+  services.udev.extraRules = ''
+    # YubiKey 5 (FIDO2/HMAC support)
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0407", TAG+="uaccess"
+  '';
+  # Enable Smartcard daemon (Required for Yubikey GPG/PIV/Auth modes)
+  services.pcscd.enable = true;
+  # --------------------
+  # User account
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.eox = {
     isNormalUser = true;
     description = "eox";
-    extraGroups = [ "networkmanager" "wheel" "podman" "libvirtd" ];
-    packages = with pkgs;
-      [
-        #  thunderbird
-      ];
+    extraGroups =
+      [ "networkmanager" "wheel" "podman" "libvirtd" "plugdev" "kvm" ];
   };
 
   # For devenv cachix
   nix.settings.trusted-users = [ "root" "eox" ];
 
-  # For windows vm
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      runAsRoot = false;
-      swtpm.enable = true;
-    };
-  };
-  services.spice-webdavd.enable = true;
-  # Enable common container config files in /etc/containers
-  virtualisation.containers.enable = true;
+  # Virtualisation stack (libvirt + spice + podman + containers)
   virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu.runAsRoot = false;
+      qemu.swtpm.enable = true;
+    };
+
+    # Enable vm usb passthrough
+    spiceUSBRedirection.enable = true;
+
+    # Enable common container config files in /etc/containers
+    containers.enable = true;
+
     podman = {
       enable = true;
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      # Create a docker alias for podman, to use it as a drop-in replacement
       dockerCompat = true;
       # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
     };
-
   };
+
+  services.spice-webdavd.enable = true;
   # Point dockerstuff to podman
   environment.sessionVariables.DOCKER_HOST =
     "unix://$(podman info --format '{{.Host.RemoteSocket.Path}}')";

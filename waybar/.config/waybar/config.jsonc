@@ -163,7 +163,7 @@
       "format-linked": "{ifname} (No IP) ",
       "format-disconnected": "Disconnected ⚠",
       "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}",
-      "on-click-right": "~/.config/waybar/scripts/wifi.sh"
+      "on-click": "ghostty --class=impala-floating -e impala",
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

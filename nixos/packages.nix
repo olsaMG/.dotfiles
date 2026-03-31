@@ -75,8 +75,11 @@
     };
   };
 
-  # Sets JAVA_HOME system-wide
-  programs.java.enable = true;
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk25;
+    # jdk21
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -109,9 +112,6 @@
     go
     gcc
     templ
-    # jdk21
-    jdk25
-    # jdk24
     lazygit
     leptosfmt
     libclang

@@ -94,7 +94,7 @@
     quickemu
     spice-gtk
     teams-for-linux
-    pkgs-unstable.rustdesk
+    # pkgs-unstable.rustdesk
     yazi
     LycheeSlicer
 

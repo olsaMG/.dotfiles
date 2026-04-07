@@ -77,8 +77,7 @@
 
   programs.java = {
     enable = true;
-    package = pkgs.jdk25;
-    # jdk21
+    package = pkgs.jdk21;
   };
 
   # List packages installed in system profile. To search, run:
@@ -133,6 +132,8 @@
     lua-language-server
     lemminx
     gopls
+    jdk17
+    jdk25
     gofumpt
     jdt-language-server
     google-java-format

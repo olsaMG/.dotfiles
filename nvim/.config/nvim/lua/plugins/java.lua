@@ -54,6 +54,13 @@ return {
 
           on_attach = function(client, bufnr)
             require("jdtls.setup").add_commands()
+
+            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+
+            vim.keymap.set("n", "<leader>rs", function()
+              vim.cmd("JdtRestart")
+            end, { buffer = bufnr, desc = "Restart jdtls" })
+
             vim.keymap.set("n", "<leader>ti", function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
             end, { buffer = bufnr, desc = "Toggle LSP Inlay Hints" })

@@ -161,6 +161,7 @@
     nmap
     jq
     gtk3
+    fd
     flameshot
     fastfetch
     ripgrep

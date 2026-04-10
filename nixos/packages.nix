@@ -43,11 +43,43 @@
   # I use zsh btw
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
-  programs.zsh.enable = true;
-  programs.zsh.autosuggestions.enable = true;
-  programs.zsh.ohMyZsh = {
+  programs.zsh = {
     enable = true;
-    plugins = [ "git" "z" ];
+    autosuggestions.enable = true;
+
+    ohMyZsh = {
+      enable = true;
+      plugins = [ "git" "z" ];
+    };
+
+    interactiveShellInit = ''
+      setjdk() {
+        case "$1" in
+          17)
+            export JAVA_HOME="${pkgs.jdk17}/lib/openjdk"
+            export PATH="$JAVA_HOME/bin:$PATH"
+            echo "Switched to JDK 17"
+            java -version
+            ;;
+          21)
+            export JAVA_HOME="${pkgs.jdk21}/lib/openjdk"
+            export PATH="$JAVA_HOME/bin:$PATH"
+            echo "Switched to JDK 21"
+            java -version
+            ;;
+          25)
+            export JAVA_HOME="${pkgs.jdk25}/lib/openjdk"
+            export PATH="$JAVA_HOME/bin:$PATH"
+            echo "Switched to JDK 25"
+            java -version
+            ;;
+          *)
+            echo "Usage: setjdk <17|21|25>"
+            echo "Current default is System JDK (25)"
+            ;;
+        esac
+      }
+    '';
   };
 
   services.syncthing = {
@@ -77,7 +109,7 @@
 
   programs.java = {
     enable = true;
-    package = pkgs.jdk21;
+    package = pkgs.jdk25;
   };
 
   # List packages installed in system profile. To search, run:
@@ -133,6 +165,7 @@
     lemminx
     gopls
     jdk17
+    jdk21
     jdk25
     gofumpt
     jdt-language-server

@@ -49,6 +49,8 @@
 
   services.tailscale.enable = true;
 
+  services.fwupd.enable = true;
+
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   # powers up the default Bluetooth controller on boot
   hardware.bluetooth.powerOnBoot = true;

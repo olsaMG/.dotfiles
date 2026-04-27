@@ -71,6 +71,11 @@ return {
         handlers = handlers,
       })
 
+      vim.lsp.config("svelte", {
+        capabilities = capabilities,
+        handlers = handlers,
+      })
+
 
       -- Using nvim-jdtls instead
       -- lspconfig.jdtls.setup({
@@ -224,7 +229,8 @@ return {
         float = { border = "rounded" },
       })
 
-      vim.lsp.enable({ "html", "biome", "nixd", "lua_ls", "lemminx", "buf_ls", "tailwindcss", "cssls", "gopls", "templ" })
+      vim.lsp.enable({ "html", "biome", "nixd", "lua_ls", "lemminx", "buf_ls", "tailwindcss", "cssls", "gopls", "templ",
+        "svelte" })
     end,
   },
 }

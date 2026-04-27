@@ -143,6 +143,7 @@
     go
     gcc
     templ
+    just
     lazygit
     leptosfmt
     libclang
@@ -174,6 +175,7 @@
     nixfmt-classic
     rust-analyzer
     tailwindcss-language-server
+    svelte-language-server
     typescript
     vscode-langservers-extracted
 

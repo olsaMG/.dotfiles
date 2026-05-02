@@ -119,6 +119,7 @@
     discord
     ghostty
     krita
+    blender
     google-chrome
     jetbrains.idea
     spotify-player
@@ -137,6 +138,7 @@
     dart-sass
     devenv
     vscode
+    godot
     gh
     git
     gnumake
@@ -165,6 +167,7 @@
     lua-language-server
     lemminx
     gopls
+    marksman
     jdk17
     jdk21
     jdk25

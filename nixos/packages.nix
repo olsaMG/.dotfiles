@@ -137,6 +137,7 @@
     exercism
     dart-sass
     devenv
+    gdscript-formatter
     vscode
     godot
     gh

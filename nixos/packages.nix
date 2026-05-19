@@ -136,10 +136,10 @@
     gemini-cli
     exercism
     dart-sass
-    devenv
+    pkgs-unstable.devenv
     gdscript-formatter
     vscode
-    godot
+    pkgs-unstable.godot
     gh
     git
     gnumake
